@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour {
     public Phase currentPhase;
     public static GameManager instance;
 
+    float timeScaleDecrease = 2f;
+    public float currentTimeScale;
+
 	// Use this for initialization
 	void Start () {
         if (!instance)
@@ -33,6 +36,7 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         dispatchPhases();
+        currentTimeScale = Time.timeScale;
 	}
 
     void dispatchPhases()
@@ -40,20 +44,51 @@ public class GameManager : MonoBehaviour {
         switch(currentPhase)
         {
             case Phase.Menu:
-                UIManager.instance.SetMenuUI();
                 break;
 
             case Phase.InGame:
-                UIManager.instance.SetInGameUI();
+                //Si le jeu est en cours boucle la fonction pauseGame jusqu'a ce que le jeu s'arrete et se met en pause
+                if (!Input.GetMouseButton(0) && Time.timeScale != 0)
+                    PauseGame();
                 break;
 
             case Phase.Pause:
-                UIManager.instance.SetPauseUI();
+                //Si le jeu est en pause boucle la fonction resumeGame jusqu'a ce que le jeu reprenne
+                if (Input.GetMouseButton(0) && Time.timeScale != 1)
+                    ResumeGame();
+                Debug.Log("Update");
                 break;
 
             case Phase.EndGame:
-                UIManager.instance.SetEndGameUI();
                 break;
+        }
+    }
+
+    void PauseGame()
+    {
+        if (Time.timeScale > 0.1)
+            Time.timeScale -= Time.deltaTime * timeScaleDecrease;
+        else
+        {
+            Time.timeScale = 0;
+            UIManager.instance.SetPauseUI();
+            currentPhase = Phase.Pause;
+        }
+
+    }
+
+    void ResumeGame()
+    {
+        if (Time.timeScale == 0)
+            Time.timeScale = 0.1f;
+
+        if (Time.timeScale < 1)
+            Time.timeScale += Time.deltaTime * timeScaleDecrease;
+        else
+        {
+            Time.timeScale = 1;
+            UIManager.instance.SetInGameUI();
+            currentPhase = Phase.InGame;
         }
     }
 }
