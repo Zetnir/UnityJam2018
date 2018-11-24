@@ -67,7 +67,10 @@ public class GameManager : MonoBehaviour {
     void PauseGame()
     {
         if (Time.timeScale > 0.1)
+        {
             Time.timeScale -= Time.deltaTime * timeScaleDecrease;
+            SoundManager.instance.VolumeDown();
+        }
         else
         {
             Time.timeScale = 0;
@@ -83,7 +86,10 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = 0.1f;
 
         if (Time.timeScale < 1)
+        {
+            SoundManager.instance.VolumeUp();
             Time.timeScale += Time.deltaTime * timeScaleIncrease;
+        }
         else
         {
             Time.timeScale = 1;
