@@ -23,12 +23,14 @@ ExportedObj/
 *.svd
 *.pdb
 *.opendb
-
+./UnityJam2018/Library/CurrentLayout.dwlt
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
 
 # Unity3D Generated File On Crash Reports
+*.meta
+
 sysinfo.txt
 
 # Builds
