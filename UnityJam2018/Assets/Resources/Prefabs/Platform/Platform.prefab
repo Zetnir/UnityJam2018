@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23779475570938550}
   - component: {fileID: 64068204788453670}
   m_Layer: 0
-  m_Name: DesertTestPlat
+  m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
