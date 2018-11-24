@@ -335,6 +335,8 @@ GameObject:
   m_Component:
   - component: {fileID: 251303622}
   - component: {fileID: 251303623}
+  - component: {fileID: 251303625}
+  - component: {fileID: 251303624}
   m_Layer: 0
   m_Name: Spawn
   m_TagString: Untagged
@@ -351,7 +353,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2116433011}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -366,9 +369,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d9b75971f7e4849b7669c0bb876048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingObjectsSpawnPoints: []
-  plateformTransform: {fileID: 0}
-  plateforme: {fileID: 0}
+  movingObjectsSpawnPoints:
+  - {fileID: 1676372196}
+  - {fileID: 2070318225}
+  - {fileID: 875346884}
+  - {fileID: 148760502}
+  - {fileID: 723940962}
+  plateformTransform: {fileID: 2116433011}
+  plateforme: {fileID: 1130590338643344, guid: 1287ed5d8c8f20242a70ba8ddafe9512, type: 2}
   biomeObstacles: []
   spawningMaterial: {fileID: 0}
   transitionPlateformNb: 0
@@ -376,6 +384,33 @@ MonoBehaviour:
   filePathPlain: 
   filePathDesert: 
   maxModuloValue: 0
+--- !u!54 &251303624
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 251303621}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &251303625
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 251303621}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.08, y: 11.56, z: 3.98}
+  m_Center: {x: 0, y: 0.060338974, z: 18.060001}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,7 +1134,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2116433010}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 2, y: 0, z: 16.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1108,6 +1143,6 @@ Transform:
   - {fileID: 875346884}
   - {fileID: 148760502}
   - {fileID: 723940962}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 251303622}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
