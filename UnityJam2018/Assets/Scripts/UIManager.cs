@@ -31,24 +31,22 @@ public class UIManager : MonoBehaviour {
 
 	}
 
-    public void MenuLaunchPlay()
-    {
-        GameManager.instance.currentPhase = GameManager.Phase.InGame;
-        SetInGameUI();
-    }
 
+    //Affiche le UI du menu
     public void SetMenuUI()
     {
         EndGameUI.SetActive(false);
         MenuUI.SetActive(true);
     }
 
+    //Affiche le UI de pause
     public void SetPauseUI()
     {
         InGameUI.SetActive(false);
         PauseUI.SetActive(true);
     }
 
+    //Affiche le UI inGame
     public void SetInGameUI()
     {
         MenuUI.SetActive(false);
@@ -56,6 +54,7 @@ public class UIManager : MonoBehaviour {
         InGameUI.SetActive(true);
     }
 
+    //Affiche le UI de fin de jeu
     public void SetEndGameUI()
     {
         InGameUI.SetActive(false);

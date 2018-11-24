@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour {
     public Phase currentPhase;
     public static GameManager instance;
 
-    float timeScaleDecrease = 2f;
+    float timeScaleDecrease = 5f;
+    float timeScaleIncrease = 2f;
     public float currentTimeScale;
 
 	// Use this for initialization
@@ -56,7 +57,6 @@ public class GameManager : MonoBehaviour {
                 //Si le jeu est en pause boucle la fonction resumeGame jusqu'a ce que le jeu reprenne
                 if (Input.GetMouseButton(0) && Time.timeScale != 1)
                     ResumeGame();
-                Debug.Log("Update");
                 break;
 
             case Phase.EndGame:
@@ -83,12 +83,21 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = 0.1f;
 
         if (Time.timeScale < 1)
-            Time.timeScale += Time.deltaTime * timeScaleDecrease;
+            Time.timeScale += Time.deltaTime * timeScaleIncrease;
         else
         {
             Time.timeScale = 1;
             UIManager.instance.SetInGameUI();
             currentPhase = Phase.InGame;
         }
+    }
+
+    public void EndTheGame()
+    {
+        //Effet de camera zoom sur le player + Rotation
+        //A completer
+
+        //Effet de ralenti sur le jeu
+        Time.timeScale = 0.1f;
     }
 }

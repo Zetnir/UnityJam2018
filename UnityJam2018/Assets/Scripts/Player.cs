@@ -24,7 +24,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
 
     //Etat du joueur
-    public static bool alive;
+    public bool alive;
 
     //Liste des biomes et biome actuel
     public enum Biomes {snow,plain,desert};
@@ -44,7 +44,7 @@ public class Player : MonoBehaviour {
     public AnimationClip deathAnimation;
 
     //Pour pouvoir aller chercher la seule instance de la classe
-    public Player playerInstance;
+    public static Player playerInstance;
     
 
     //Variables de taille de l'ecran
@@ -62,11 +62,8 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        
-
-
         //Initialiser l'instance
-        if (playerInstance == null)
+        if (!playerInstance)
             playerInstance = this;
 
         //Set le mesh du joueur
@@ -86,7 +83,7 @@ public class Player : MonoBehaviour {
         if(alive)
             points += Time.deltaTime * multiplicateur;
 
-        pointsTxt.text = Mathf.FloorToInt(points).ToString();
+        //pointsTxt.text = Mathf.FloorToInt(points).ToString();
 
         //Conditions en fonction de l'état du jeu 
         if (points > 75 && meshFilter.mesh.name.Contains("Cube"))
@@ -154,6 +151,7 @@ public class Player : MonoBehaviour {
             //Gere l'evenement lors de la collision avec un obstacle 
             case "Obstacle":
                 alive = false;
+                GameManager.instance.EndTheGame();
                 Destroy(gameObject,deathAnimation.length);
                 break;
             //Gere l'evenement lors de la collision avec un marqueur de changement de biome
