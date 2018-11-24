@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class MovingObject : MonoBehaviour {
 
+    /*
+     Possede une vitesse 
+     Existe sur un gameObject avec un collider
+    */
+
+
+    public static float speed;
+
 	// Use this for initialization
-	void Start () {
-		
-	}
+	void Start ()
+    {}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+        transform.Translate(new Vector3(0, 0, speed));
 	}
 }
