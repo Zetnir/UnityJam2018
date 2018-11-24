@@ -133,7 +133,10 @@ public class Spawner : MonoBehaviour {
         if (other.tag.Contains("Obstacles"))
             MovingObjectSpawn();
         else if (other.tag.Contains("Plateform"))
+        {
             PlateformSpawn();
+            Debug.Log("Spawn Platform");
+        }
 
 
     }
@@ -203,9 +206,6 @@ public class Spawner : MonoBehaviour {
         
     
     } 
-
-
-
 
     //Spawn des plateformes
     private void PlateformSpawn()
