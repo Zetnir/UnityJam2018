@@ -40,8 +40,8 @@ public class Spawner : MonoBehaviour {
 
     public GameObject plateforme;
 
-    private List<GameObject> biomeObstacles = new List<GameObject>();
-    private Material spawningMaterial;
+    public List<GameObject> biomeObstacles = new List<GameObject>();
+    public Material spawningMaterial;
 
     public int transitionPlateformNb;
 
@@ -58,7 +58,7 @@ public class Spawner : MonoBehaviour {
     {
 
 
-
+        PlateformSpawn();
         OnBiomeChange();
        
     }
@@ -79,7 +79,7 @@ public class Spawner : MonoBehaviour {
     {
         string path = "";
 
-        switch (Player.biomeActuel)
+        switch (Player.currentBiome)
         {
             case Player.Biomes.snow:
                 path = filePathSnow;
@@ -103,15 +103,15 @@ public class Spawner : MonoBehaviour {
         if (biomeObstacles.Count > 0)
             biomeObstacles.Clear();
 
-        Material m = Resources.Load<Material>(path);
-        GameObject o = Resources.Load<GameObject>(path);
-        GameObject[] tempList = o.GetComponentsInChildren<GameObject>();
+        //Import de la texture et conversion en material
+        Object[] TempMaterialList = Resources.LoadAll(path, typeof(Material));
+        spawningMaterial = TempMaterialList[0]as Material;
 
-
-        spawningMaterial = m;
-        foreach (GameObject i in tempList)
+        //Import des props et conversion en GameObjects
+        Object[] tempList = Resources.LoadAll(path, typeof(GameObject));
+        foreach(object obj in tempList)
         {
-            biomeObstacles.Add(i);
+            biomeObstacles.Add(obj as GameObject);
         }
 
 
@@ -141,10 +141,8 @@ public class Spawner : MonoBehaviour {
 
     private void PlateformSpawn()
     {
-        GameObject g = Instantiate(plateforme, plateformTransform);
-        MeshRenderer r = g.GetComponent<MeshRenderer>();
-        r.material= spawningMaterial;
-       
+        GameObject g = Instantiate(plateforme, transform.position, Quaternion.identity);
+        g.GetComponent<Renderer>().materials[0] = spawningMaterial;
     }
 
 }

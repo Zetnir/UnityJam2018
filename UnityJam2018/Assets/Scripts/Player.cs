@@ -28,7 +28,7 @@ public class Player : MonoBehaviour {
 
     //Liste des biomes et biome actuel
     public enum Biomes {snow,plain,desert};
-    public static Biomes biomeActuel;
+    public static Biomes currentBiome;
 
     //Mesh du gameObject en fonction des biomes 
 
@@ -73,6 +73,8 @@ public class Player : MonoBehaviour {
         //Initialiser les autres variables
         points = 0;
         alive = true;
+
+        currentBiome = Biomes.snow;
 	}
 
    
@@ -157,15 +159,15 @@ public class Player : MonoBehaviour {
             //Gere l'evenement lors de la collision avec un marqueur de changement de biome
             case "Snow":
                 OnBiomeChange(Biomes.snow);
-                biomeActuel = Biomes.snow;
+                currentBiome = Biomes.snow;
                 break;
             case "Desert":
                 OnBiomeChange(Biomes.desert);
-                biomeActuel = Biomes.desert;
+                currentBiome = Biomes.desert;
                 break;
             case "Plain":
                 OnBiomeChange(Biomes.plain);
-                biomeActuel = Biomes.plain;
+                currentBiome = Biomes.plain;
                 break;
 
 
