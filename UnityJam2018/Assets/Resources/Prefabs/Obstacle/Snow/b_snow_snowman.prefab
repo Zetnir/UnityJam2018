@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33568618146568070}
   - component: {fileID: 23351698619411830}
   - component: {fileID: 65974941008976584}
+  - component: {fileID: 114791454100327860}
   m_Layer: 0
   m_Name: b_snow_snowman
   m_TagString: Obstacle
@@ -96,3 +97,14 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.620187, z: 1}
   m_Center: {x: 0, y: 0.8100935, z: 0}
+--- !u!114 &114791454100327860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1128831114028740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcce5cb41f836fe4cb67ea381ab9b467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

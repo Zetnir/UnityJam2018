@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33460438280340948}
   - component: {fileID: 23309870995968092}
   - component: {fileID: 65478796385600570}
+  - component: {fileID: 114840406775436480}
   m_Layer: 0
   m_Name: a_desert_cactus
   m_TagString: Obstacle
@@ -96,3 +97,14 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 2, z: 0.6}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &114840406775436480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1571193771548706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcce5cb41f836fe4cb67ea381ab9b467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

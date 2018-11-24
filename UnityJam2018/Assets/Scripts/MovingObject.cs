@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingObject : MonoBehaviour {
+public class MovingObject : MonoBehaviour
+{
 
     /*
      Possede une vitesse 
@@ -10,15 +11,15 @@ public class MovingObject : MonoBehaviour {
     */
 
 
-    public static float speed;
+    public static float speed = 7;
 
-	// Use this for initialization
-	void Start ()
-    {}
-	
-	// Update is called once per frame
-	void Update ()
+    // Use this for initialization
+    void Start()
+    { }
+
+    // Update is called once per frame
+    void Update()
     {
-        transform.Translate(new Vector3(0, 0, speed));
-	}
+        transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
+    }
 }

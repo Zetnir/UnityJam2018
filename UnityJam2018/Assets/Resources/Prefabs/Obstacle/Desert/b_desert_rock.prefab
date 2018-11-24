@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33209713511812778}
   - component: {fileID: 23849092473150228}
   - component: {fileID: 65450158086163880}
+  - component: {fileID: 114846930089321280}
   m_Layer: 0
   m_Name: b_desert_rock
   m_TagString: Obstacle
@@ -96,3 +97,14 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.4835566, z: 0.8}
   m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!114 &114846930089321280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1088897400549216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcce5cb41f836fe4cb67ea381ab9b467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

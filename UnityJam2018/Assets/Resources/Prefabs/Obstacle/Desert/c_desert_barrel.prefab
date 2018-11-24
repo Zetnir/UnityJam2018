@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33073931695542360}
   - component: {fileID: 23234629816003448}
   - component: {fileID: 64136652498974740}
+  - component: {fileID: 114904339546135400}
   m_Layer: 0
   m_Name: c_desert_barrel
   m_TagString: Obstacle
@@ -98,3 +99,14 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 25faab7ceb207d94fb7d9f5d6757af35, type: 3}
+--- !u!114 &114904339546135400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1182427451849600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcce5cb41f836fe4cb67ea381ab9b467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

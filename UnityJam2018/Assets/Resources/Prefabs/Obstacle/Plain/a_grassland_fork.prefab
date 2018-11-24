@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33390951631279852}
   - component: {fileID: 23581100393481560}
   - component: {fileID: 65170903969213794}
+  - component: {fileID: 114110018116658790}
   m_Layer: 0
   m_Name: a_grassland_fork
   m_TagString: Obstacle
@@ -96,3 +97,14 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8705728, y: 3, z: 0.23049621}
   m_Center: {x: -0.027573168, y: 1.5, z: 0.0246946}
+--- !u!114 &114110018116658790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1556301303309124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcce5cb41f836fe4cb67ea381ab9b467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
