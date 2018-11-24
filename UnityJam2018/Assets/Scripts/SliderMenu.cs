@@ -6,7 +6,10 @@ using UnityEngine.EventSystems;
 
 public class SliderMenu : MonoBehaviour {
 
+    //Pour avoir le slider courant
     Slider mySlider;
+
+    //La vitesse a laquelle la valeur du slider diminue
     float decreaseSpeed = 0.5f;
 
 	// Use this for initialization
@@ -33,8 +36,10 @@ public class SliderMenu : MonoBehaviour {
         else
         {
             //Lance le jeu quand atteint le max et désactive l'interaction avec l'objet
+            //Affiche aussi le UI du jeu
             mySlider.interactable = false;
-            UIManager.instance.MenuLaunchPlay();
+            GameManager.instance.currentPhase = GameManager.Phase.InGame;
+            UIManager.instance.SetInGameUI();
         }
 
     }
