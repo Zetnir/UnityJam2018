@@ -68,21 +68,19 @@ public class Spawner : MonoBehaviour {
         position = 0;
         Random.InitState(Mathf.FloorToInt(Time.deltaTime * 1999));
 
+        OnBiomeChange();
 
         PlateformSpawn();
-
-        OnBiomeChange();
+        MovingObjectSpawn();
        
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-	
-        
 
 
-	}
+    }
 
 
 
