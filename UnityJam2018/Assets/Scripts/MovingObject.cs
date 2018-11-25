@@ -11,7 +11,7 @@ public class MovingObject : MonoBehaviour
     */
 
     public const float SPEED_INIT = 3;
-    public static float speed= 3;
+    public static float speed= 7;
 
     // Use this for initialization
     void Start()
