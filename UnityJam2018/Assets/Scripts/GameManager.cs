@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour {
 
                 if (MovingObject.speed < 20)
                     MovingObject.speed += MovingObject.SPEED_INIT * Time.deltaTime * 0.10f;
-                Debug.Log(MovingObject.speed);
+
                 break;
 
             case Phase.Pause:
