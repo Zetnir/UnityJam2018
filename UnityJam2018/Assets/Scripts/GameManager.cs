@@ -49,13 +49,13 @@ public class GameManager : MonoBehaviour {
 
             case Phase.InGame:
                 //Si le jeu est en cours boucle la fonction pauseGame jusqu'a ce que le jeu s'arrete et se met en pause
-                if (!Input.GetMouseButton(0) && Time.timeScale != 0)
+                if (!Input.GetMouseButton(0) && Time.timeScale != 0) //Input.touchCount < 1
                     PauseGame();
                 break;
 
             case Phase.Pause:
                 //Si le jeu est en pause boucle la fonction resumeGame jusqu'a ce que le jeu reprenne
-                if (Input.GetMouseButton(0) && Time.timeScale != 1)
+                if (Input.GetMouseButton(0) && Time.timeScale != 1) //Input.touchCount > 0
                     ResumeGame();
                 break;
 

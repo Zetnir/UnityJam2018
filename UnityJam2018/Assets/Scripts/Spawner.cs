@@ -133,7 +133,7 @@ public class Spawner : MonoBehaviour {
     {
         if (other.tag.Contains("Ghost"))
             MovingObjectSpawn();
-        else if (other.tag.Contains("Plateform"))
+        else if (other.tag.Contains("Platform"))
         {
             PlateformSpawn();
             Debug.Log("Spawn Platform");
@@ -196,7 +196,7 @@ public class Spawner : MonoBehaviour {
     {   //Value corresponds a un nombre aleatoire entre 0 et MaxModuloValue 
 
         //Retourne un objet de taille 1 
-        if (value <= 3)
+        if (value <= 1)
         {
             Debug.Log("Returning :" + biomeObstacles[0].name);
             
@@ -204,7 +204,7 @@ public class Spawner : MonoBehaviour {
             return biomeObstacles[0];
 
         }
-        else if (value <= 5)
+        else if (value <= 3)
         {   //Retourne un objet de taille 2 en 3
             Debug.Log("Returning :" + biomeObstacles[1].name);
            
@@ -212,7 +212,7 @@ public class Spawner : MonoBehaviour {
             return biomeObstacles[1];
 
         }
-        else if (value <= 7)
+        else if (value <= 5)
         {
             //Retourne un objet de taille 3
             Debug.Log("Returning :" + biomeObstacles[2].name);
