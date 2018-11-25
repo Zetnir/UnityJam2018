@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour {
             instance = this;
 
         Time.timeScale = 1;
+
+        MovingObject.speed = 7;
 	}
 	
 	// Update is called once per frame
@@ -113,12 +115,7 @@ public class GameManager : MonoBehaviour {
 
     public void EndTheGame()
     {
-        //Effet de camera zoom sur le player + Rotation
-        //A completer
-
-        //Effet de ralenti sur le jeu
-        Time.timeScale = 0;
-
+        MovingObject.speed = 0;
         UIManager.instance.SetEndGameUI();
         currentPhase = Phase.EndGame;
     }

@@ -33,7 +33,6 @@ public class Player : MonoBehaviour {
     //Mesh du gameObject en fonction des biomes 
 
     [Tooltip("Meshs du gameObject en fonction des biomes Dans l'ordre : Snow plain desert  ")]
-
     public GameObject[] playerSkins;
     public GameObject currentSkin;
 
@@ -55,6 +54,11 @@ public class Player : MonoBehaviour {
     private float width = Screen.width;
     private float height = Screen.height;
     public float ratioScreenScene;
+
+    //Joue un FX en fonction de ce qui arrive au joueur
+    public GameObject fxDeath;
+    public GameObject fxFormChangement;
+    public GameObject currentFx;
 
     //Variable pour le son du Joueur
     public AudioClip formChangementForm;
@@ -97,8 +101,6 @@ public class Player : MonoBehaviour {
             delataPoints += Time.deltaTime * multiplicateur;
         }
         pointsTxt.text = Mathf.FloorToInt(points).ToString();
-
-
 
 
         //Déterminer le changement de phase
@@ -170,6 +172,7 @@ public class Player : MonoBehaviour {
     {
         Destroy(currentSkin);
         PlayChangementSound();
+        currentFx = Instantiate(fxFormChangement, transform);
 
         switch (biome)
         {
@@ -196,8 +199,7 @@ public class Player : MonoBehaviour {
     {
         
     }
-    
-  
+
     private void OnTriggerEnter(Collider other)
     {
 
@@ -207,7 +209,10 @@ public class Player : MonoBehaviour {
             case "Obstacle":
                 alive = false;
                 PlayDeathPlayerSound();
+                currentFx = Instantiate(fxDeath, transform);
+                currentFx.GetComponent<ParticleSystem>().Play();
                 GameManager.instance.EndTheGame();
+
                 //Destroy(gameObject,deathAnimation.length);
                 break;
             //Gere l'evenement lors de la collision avec un marqueur de changement de biome
