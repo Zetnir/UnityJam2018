@@ -44,6 +44,8 @@ public class SliderMenu : MonoBehaviour {
 
     }
 
+    public void
+
     //Si on retourne au menu reset les valeurs du slider
     public void ResetSlider()
     {

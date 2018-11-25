@@ -85,7 +85,7 @@ public class Player : MonoBehaviour {
         if(alive)
             points += Time.deltaTime * multiplicateur;
 
-        //pointsTxt.text = Mathf.FloorToInt(points).ToString();
+        pointsTxt.text = Mathf.FloorToInt(points).ToString();
 
         //Conditions en fonction de l'état du jeu 
         if (points > 75 && meshFilter.mesh.name.Contains("Cube"))
@@ -154,7 +154,7 @@ public class Player : MonoBehaviour {
             case "Obstacle":
                 alive = false;
                 GameManager.instance.EndTheGame();
-                Destroy(gameObject,deathAnimation.length);
+                //Destroy(gameObject,deathAnimation.length);
                 break;
             //Gere l'evenement lors de la collision avec un marqueur de changement de biome
             case "Snow":

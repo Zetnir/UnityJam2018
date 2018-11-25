@@ -104,6 +104,9 @@ public class GameManager : MonoBehaviour {
         //A completer
 
         //Effet de ralenti sur le jeu
-        Time.timeScale = 0.1f;
+        Time.timeScale = 0;
+
+        UIManager.instance.SetEndGameUI();
+        currentPhase = Phase.EndGame;
     }
 }
