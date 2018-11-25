@@ -53,6 +53,10 @@ public class Player : MonoBehaviour {
     private float height = Screen.height;
     public float ratioScreenScene;
 
+    //Variable pour le son du Joueur
+    public AudioClip formChangementForm;
+    public AudioClip deathSound;
+
 
     //Variables prives
     private MeshFilter meshFilter;
@@ -139,10 +143,29 @@ public class Player : MonoBehaviour {
 
 
     }
+
+    public void PlayChangementSound()
+    {
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.Stop();
+        audioSource.clip = formChangementForm;
+        audioSource.Play();
+    }
+
+    public void PlayDeathPlayerSound()
+    {
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.Stop();
+        audioSource.clip = deathSound;
+        audioSource.Play();
+    }
+
     //Gerer le changement de mesh en fonction du nouveau biome dans le game manager
     public void OnBiomeChange(Biomes biome)
     {
         Destroy(currentSkin);
+        PlayChangementSound();
+
         switch (biome)
         {
             case Biomes.snow:
@@ -178,6 +201,7 @@ public class Player : MonoBehaviour {
             //Gere l'evenement lors de la collision avec un obstacle 
             case "Obstacle":
                 alive = false;
+                PlayDeathPlayerSound();
                 GameManager.instance.EndTheGame();
                 //Destroy(gameObject,deathAnimation.length);
                 break;
