@@ -29,7 +29,7 @@ public class Player : MonoBehaviour {
     //Liste des biomes et biome actuel
     public enum Biomes {snow,plain,desert};
     public static Biomes currentBiome;
-
+    public static Biomes nextBiome;
     //Mesh du gameObject en fonction des biomes 
 
     [Tooltip("Meshs du gameObject en fonction des biomes Dans l'ordre : Snow plain desert  ")]
@@ -75,6 +75,7 @@ public class Player : MonoBehaviour {
         alive = true;
 
         currentBiome = Biomes.snow;
+        nextBiome = currentBiome;
 	}
 
    
@@ -87,11 +88,22 @@ public class Player : MonoBehaviour {
 
         pointsTxt.text = Mathf.FloorToInt(points).ToString();
 
+
+
+
+        //Déterminer le changement de phase
+        if (points % 600 == 0)
+        { 
+            if (currentBiome == Biomes.desert)
+                nextBiome = Biomes.snow;
+            else
+                nextBiome++;
+
+            Spawner.instance.OnBiomeChange();
+        }
+
         //Conditions en fonction de l'état du jeu 
-        if (points > 75 && meshFilter.mesh.name.Contains("Cube"))
-            meshFilter.mesh = playerMeshs[1];
-       else if (points > 125 && meshFilter.mesh.name.Contains("Sphere"))
-            meshFilter.mesh = playerMeshs[2];
+
 
     }
 

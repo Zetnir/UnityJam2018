@@ -46,9 +46,10 @@ public class Spawner : MonoBehaviour {
     public Material spawningMaterial;
 
 
-    //Nombre de plateforme de transition
+    //Variables de transition
     public int transitionPlateformNb;
-
+    private bool inTransition;
+    public GameObject transitionPlatform;
 
     //File paths
     public string filePathSnow;
@@ -61,10 +62,16 @@ public class Spawner : MonoBehaviour {
     public int position;
     private int lastObjectSize;
 
+   
+
+    //Instance
+    public static Spawner instance;
+
     // Use this for initialization
     void Start ()
     {
-
+        if (!instance)
+            instance = this;
 
         position = 0;
         Random.InitState(Mathf.FloorToInt(Time.deltaTime * 1999));
@@ -90,7 +97,7 @@ public class Spawner : MonoBehaviour {
     {
         string path = "";
 
-        switch (Player.currentBiome)
+        switch (Player.nextBiome)
         {
             case Player.Biomes.snow:
                 path = filePathSnow;
@@ -234,8 +241,16 @@ public class Spawner : MonoBehaviour {
     //Spawn des plateformes
     private void PlateformSpawn()
     {
-        GameObject g = Instantiate(plateforme, transform.position, Quaternion.identity);
-        g.GetComponent<Renderer>().materials[0] = spawningMaterial;
-    }
+        if (inTransition)
+        {
+            GameObject g = Instantiate(transitionPlatform, transform.position, Quaternion.identity);
+            inTransition = false;
+        }
+        else
+        { 
+            GameObject g = Instantiate(plateforme, transform.position, Quaternion.identity);
+            g.GetComponent<Renderer>().materials[0] = spawningMaterial;
 
+        }
+    }
 }
