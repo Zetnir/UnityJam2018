@@ -33,18 +33,30 @@ public class SliderMenu : MonoBehaviour {
             if (mySlider.value != mySlider.minValue)
                 mySlider.value -= decreaseSpeed * Time.deltaTime;
         }
-        else
-        {
-            //Lance le jeu quand atteint le max et désactive l'interaction avec l'objet
-            //Affiche aussi le UI du jeu
-            mySlider.interactable = false;
-            GameManager.instance.currentPhase = GameManager.Phase.InGame;
-            UIManager.instance.SetInGameUI();
-        }
 
     }
 
-    public void
+    public void EnterInGame()
+    {
+        if(mySlider.value == mySlider.maxValue)
+        {
+            mySlider.interactable = false;
+            GameManager.instance.currentPhase = GameManager.Phase.InGame;
+            UIManager.instance.ResetEndGameUI();
+            UIManager.instance.SetInGameUI();
+        }
+    }
+
+    public void EnterInMenu()
+    {
+        if (mySlider.value == mySlider.maxValue)
+        {
+            mySlider.interactable = false;
+            GameManager.instance.currentPhase = GameManager.Phase.Menu;
+            UIManager.instance.ResetMenuUI();
+            UIManager.instance.SetMenuUI();
+        }
+    }
 
     //Si on retourne au menu reset les valeurs du slider
     public void ResetSlider()

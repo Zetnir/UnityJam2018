@@ -14,7 +14,11 @@ public class UIManager : MonoBehaviour {
 
     public GameObject PauseUI;
     public GameObject InGameUI;
+
+
     public GameObject EndGameUI;
+    public Slider ExitSliderUI;
+    public Slider ReplaySliderUI;
 
 
 
@@ -39,6 +43,12 @@ public class UIManager : MonoBehaviour {
         MenuUI.SetActive(true);
     }
 
+    public void ResetMenuUI()
+    {
+        SliderMenuUI.value = SliderMenuUI.minValue;
+        SliderMenuUI.interactable = true;
+    }
+
     //Affiche le UI de pause
     public void SetPauseUI()
     {
@@ -51,6 +61,7 @@ public class UIManager : MonoBehaviour {
     {
         MenuUI.SetActive(false);
         PauseUI.SetActive(false);
+        EndGameUI.SetActive(false);
         InGameUI.SetActive(true);
     }
 
@@ -61,4 +72,11 @@ public class UIManager : MonoBehaviour {
         EndGameUI.SetActive(true);
     }
 
+    public void ResetEndGameUI()
+    {
+        ReplaySliderUI.value = SliderMenuUI.minValue;
+        ReplaySliderUI.interactable = true;
+        ExitSliderUI.value = SliderMenuUI.minValue;
+        ExitSliderUI.interactable = true;
+    }
 }
