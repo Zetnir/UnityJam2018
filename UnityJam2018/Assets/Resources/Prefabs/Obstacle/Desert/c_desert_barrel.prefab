@@ -21,8 +21,9 @@ GameObject:
   - component: {fileID: 4849602284891460}
   - component: {fileID: 33073931695542360}
   - component: {fileID: 23234629816003448}
-  - component: {fileID: 64136652498974740}
   - component: {fileID: 114904339546135400}
+  - component: {fileID: 65927736327393434}
+  - component: {fileID: 65079780164043744}
   m_Layer: 0
   m_Name: c_desert_barrel
   m_TagString: Obstacle
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1182427451849600}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,8 +86,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1182427451849600}
   m_Mesh: {fileID: 4300000, guid: a7a3656f71b90ce4cab927ab42aa6377, type: 3}
---- !u!64 &64136652498974740
-MeshCollider:
+--- !u!65 &65079780164043744
+BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -94,11 +95,21 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 25faab7ceb207d94fb7d9f5d6757af35, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1.8998237, z: 2.0119295}
+  m_Center: {x: -0.85, y: 0.94991183, z: -0.16746476}
+--- !u!65 &65927736327393434
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1182427451849600}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1.8998237, z: 2.0119295}
+  m_Center: {x: 0.85, y: 0.94991183, z: -0.16746476}
 --- !u!114 &114904339546135400
 MonoBehaviour:
   m_ObjectHideFlags: 1

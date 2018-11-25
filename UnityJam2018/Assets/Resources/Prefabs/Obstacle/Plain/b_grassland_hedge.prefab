@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4318557865058056}
   - component: {fileID: 33318369339682690}
   - component: {fileID: 23980008131385542}
-  - component: {fileID: 64220150476226082}
   - component: {fileID: 114683825967903514}
+  - component: {fileID: 65245239116724824}
   m_Layer: 0
   m_Name: b_grassland_hedge
   m_TagString: Obstacle
@@ -85,8 +85,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1786002608306038}
   m_Mesh: {fileID: 4300000, guid: ab698a1e12b0359489a92b6d476e024c, type: 3}
---- !u!64 &64220150476226082
-MeshCollider:
+--- !u!65 &65245239116724824
+BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -94,11 +94,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: ab698a1e12b0359489a92b6d476e024c, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 0.8, z: 0.9851415}
+  m_Center: {x: -0.0006157756, y: 0.47, z: 0.000000029802322}
 --- !u!114 &114683825967903514
 MonoBehaviour:
   m_ObjectHideFlags: 1
