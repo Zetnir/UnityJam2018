@@ -237,7 +237,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1470528789892394}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: -74.14}
+  m_LocalPosition: {x: 0, y: 0.5, z: -74.2}
   m_LocalScale: {x: 5, y: 1, z: 9.8}
   m_Children:
   - {fileID: 4825321091449984}
@@ -554,12 +554,19 @@ MonoBehaviour:
   - {fileID: 4865169641597574}
   - {fileID: 4414610833842832}
   plateformTransform: {fileID: 4744485664903382}
-  plateforme: {fileID: 1130590338643344, guid: b85c501e7c3d42b419d04c2479396868, type: 2}
   Ghost: {fileID: 1735424047631462, guid: 220fbf194c4c9944cbfad2be900dddc6, type: 2}
   biomeObstacles: []
-  spawningMaterial: {fileID: 0}
+  SpawningPlateforme: {fileID: 0}
+  transitionPlateform: {fileID: 1130590338643344, guid: b55fc5efc7f3a9044b27ef8f527fa221,
+    type: 2}
+  snowSpawning: {fileID: 1130590338643344, guid: b85c501e7c3d42b419d04c2479396868,
+    type: 2}
+  grassLandSpawning: {fileID: 1130590338643344, guid: 4cb61a49411da1d4d848a1527e1b5b0b,
+    type: 2}
+  desertSpawning: {fileID: 1130590338643344, guid: c078f3a063ca623459c4934c3a7f5084,
+    type: 2}
   transitionPlateformNb: 0
-  transitionPlatform: {fileID: 1989342990880880, guid: 2a4c1012a434f8740b6dea166a1d888b,
+  transitionPlatformMaterial: {fileID: 2100000, guid: 830a60dc83a6dfc4aab0ffad8e7d07b6,
     type: 2}
   filePathSnow: Prefabs/Obstacle/Snow
   filePathPlain: Prefabs/Obstacle/Plain

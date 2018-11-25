@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4660669959759206}
   - component: {fileID: 33362705833454846}
-  - component: {fileID: 135248307210172946}
   - component: {fileID: 114945394550247478}
+  - component: {fileID: 65625275622306602}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Ghost
@@ -49,6 +49,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1735424047631462}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65625275622306602
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1735424047631462}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114945394550247478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -60,15 +72,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcce5cb41f836fe4cb67ea381ab9b467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &135248307210172946
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1735424047631462}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}

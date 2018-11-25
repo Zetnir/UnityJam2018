@@ -38,18 +38,27 @@ public class Spawner : MonoBehaviour {
     public Transform [] movingObjectsSpawnPoints;
     public Transform plateformTransform;
 
-    //Prefab de la plateform
-    public GameObject plateforme;
-    public GameObject Ghost;
+   
 
+    public GameObject Ghost;
     public List<GameObject> biomeObstacles = new List<GameObject>();
-    public Material spawningMaterial;
+ 
+    
+    
+    //Prefabs de plateforme
+    public GameObject SpawningPlateforme;
+
+
+    public GameObject transitionPlateform;
+    public GameObject snowSpawning;
+    public GameObject grassLandSpawning;
+    public GameObject desertSpawning;
 
 
     //Variables de transition
     public int transitionPlateformNb;
     public static bool inTransition;
-    public Material transitionPlatform;
+    public Material transitionPlatformMaterial;
 
     //File paths
     public string filePathSnow;
@@ -100,15 +109,18 @@ public class Spawner : MonoBehaviour {
         {
             case Player.Biomes.snow:
                 path = filePathSnow;
+                SpawningPlateforme = snowSpawning;
                     break;
                 
 
             case Player.Biomes.plain:
                 path = filePathPlain;
+                SpawningPlateforme = grassLandSpawning;
                 break;
 
             case Player.Biomes.desert:
                 path = filePathDesert;
+                SpawningPlateforme = desertSpawning;
                 break;
 
             default:
@@ -151,6 +163,7 @@ public class Spawner : MonoBehaviour {
 
     private void MovingObjectSpawn()
     {
+        int spawnedLast = 0;
         isSpawinObjects = true;
         if (!inTransition)
         { 
@@ -176,7 +189,7 @@ public class Spawner : MonoBehaviour {
                     GameObject c = Instantiate(g, t.position, Quaternion.identity);
                     position += 3;
                 }
-                else if (lastObjectSize == 2 && position < 3) //Faire la moyene des deux points si c'est un objet de taille 2
+                else if (lastObjectSize == 2 && position < 3 && spawnedLast != 2) //Faire la moyene des deux points si c'est un objet de taille 2
                 {
                     Vector3 newPosition = new Vector3(((movingObjectsSpawnPoints[position].position.x + movingObjectsSpawnPoints[position + 1].position.x) / 2), movingObjectsSpawnPoints[position].position.y, movingObjectsSpawnPoints[position].position.z);
 
@@ -188,8 +201,8 @@ public class Spawner : MonoBehaviour {
                     GameObject c = Instantiate(g, t.position, Quaternion.identity);
                     position++;
                 }
-               
 
+                    spawnedLast = lastObjectSize;
 
             }
             else
@@ -242,21 +255,26 @@ public class Spawner : MonoBehaviour {
     //Spawn des plateformes
     private void PlateformSpawn()
     {
-            GameObject g = Instantiate(plateforme, transform.position, Quaternion.identity);
-            if (inTransition)
-            { 
-                g.GetComponent<Renderer>().materials[0] = spawningMaterial;
-                g.AddComponent<BoxCollider>();
-                BoxCollider b = g.GetComponent<BoxCollider>();
-                b.size = new Vector3(10,1,10);
-                b.isTrigger = true;
-                g.name = "Transition";
-                inTransition = false;
-            }
-            else
-                g.GetComponent<Renderer>().materials[0] = spawningMaterial;
-   
-       
+
+
+        if (inTransition)
+        {
+            GameObject t = Instantiate(transitionPlateform, transform.position, Quaternion.identity);
+            t.GetComponent<Renderer>().materials[0] = transitionPlatformMaterial;
+            t.AddComponent<BoxCollider>();
+            BoxCollider b = t.GetComponent<BoxCollider>();
+            b.size = new Vector3(10, 1, 10);
+            b.isTrigger = true;
+            t.name = "Transition";
+            inTransition = false;
+        }
+        else
+        { 
+            GameObject g = Instantiate(SpawningPlateforme, transform.position, Quaternion.identity);
+        }
+
+
+
     }
 
     IEnumerator DelaySpawnPlatteforme()

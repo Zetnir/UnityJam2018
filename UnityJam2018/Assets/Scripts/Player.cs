@@ -41,6 +41,9 @@ public class Player : MonoBehaviour {
     public float points;
     public int multiplicateur;
 
+    //Variable pour switch de biome
+    private float delataPoints;
+
     //Animation de mort
     public AnimationClip deathAnimation;
 
@@ -88,16 +91,18 @@ public class Player : MonoBehaviour {
     //Gagne de plus en plus de points en fonction du temps
     void Update () {
 
-        if(alive && GameManager.instance.currentPhase == GameManager.Phase.InGame)
+        if (alive && GameManager.instance.currentPhase == GameManager.Phase.InGame)
+        { 
             points += Time.deltaTime * multiplicateur;
-
+            delataPoints += Time.deltaTime * multiplicateur;
+        }
         pointsTxt.text = Mathf.FloorToInt(points).ToString();
 
 
 
 
         //Déterminer le changement de phase
-        if (Mathf.FloorToInt(points) % 600 == 1)
+        if (delataPoints >= 600)
         {
             switch (currentBiome)
             {
@@ -113,7 +118,7 @@ public class Player : MonoBehaviour {
                 default:
                     break;
             }
-
+            delataPoints = 0;
             Spawner.instance.OnBiomeChange();
             Spawner.inTransition = true;
         }
