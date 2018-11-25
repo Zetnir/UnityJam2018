@@ -48,7 +48,7 @@ public class Spawner : MonoBehaviour {
 
     //Variables de transition
     public int transitionPlateformNb;
-    private bool inTransition;
+    public static bool inTransition;
     public GameObject transitionPlatform;
 
     //File paths
@@ -142,15 +142,20 @@ public class Spawner : MonoBehaviour {
             MovingObjectSpawn();
         else if (other.tag.Contains("Platform"))
         {
+            if(other.gameObject.name.Contains("Transition"))
+                inTransition = false;
             PlateformSpawn();
-            Debug.Log("Spawn Platform");
         }
-
+        Debug.Log("State de transition : "+inTransition);
 
     }
 
     private void MovingObjectSpawn()
     {
+
+        if (inTransition)
+            return;
+
 
         GameObject spawnGhost = Instantiate(Ghost, movingObjectsSpawnPoints[0].position, Quaternion.identity);
         //Tant qu'il y a de la place sur la plateforme
@@ -160,7 +165,6 @@ public class Spawner : MonoBehaviour {
 
             primaryValue =  Random.Range(0, maxModuloValue);
             GameObject g = ObjectToSpawn(primaryValue);
-            Debug.Log(position);
             Transform t= movingObjectsSpawnPoints[position];
 
             //Verifier qu'on spawn un vrai objet
@@ -205,7 +209,6 @@ public class Spawner : MonoBehaviour {
         //Retourne un objet de taille 1 
         if (value <= 1)
         {
-            Debug.Log("Returning :" + biomeObstacles[0].name);
             
             lastObjectSize = 1;
             return biomeObstacles[0];
@@ -213,7 +216,7 @@ public class Spawner : MonoBehaviour {
         }
         else if (value <= 3)
         {   //Retourne un objet de taille 2 en 3
-            Debug.Log("Returning :" + biomeObstacles[1].name);
+           
            
             lastObjectSize = 2;
             return biomeObstacles[1];
@@ -222,13 +225,11 @@ public class Spawner : MonoBehaviour {
         else if (value <= 5)
         {
             //Retourne un objet de taille 3
-            Debug.Log("Returning :" + biomeObstacles[2].name);
             lastObjectSize = 3;
             return biomeObstacles[2];
         }
         else
         {
-            Debug.Log("Returning : Nothing" );
             //Retourne un objet vide de taille 1
             lastObjectSize = 1;
            
@@ -244,7 +245,8 @@ public class Spawner : MonoBehaviour {
         if (inTransition)
         {
             GameObject g = Instantiate(transitionPlatform, transform.position, Quaternion.identity);
-            inTransition = false;
+            Debug.Log("Transition plateform spwned" + g.name);
+           
         }
         else
         { 
