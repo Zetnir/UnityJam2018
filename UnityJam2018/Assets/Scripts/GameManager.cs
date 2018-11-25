@@ -58,6 +58,9 @@ public class GameManager : MonoBehaviour {
                 //Si le jeu est en cours boucle la fonction pauseGame jusqu'a ce que le jeu s'arrete et se met en pause
                 if (putOnPause && Time.timeScale != 0) //Input.touchCount < 1
                     PauseGame();
+
+                MovingObject.speed += MovingObject.SPEED_INIT * Time.deltaTime * 0.10f;
+                Debug.Log(MovingObject.speed);
                 break;
 
             case Phase.Pause:

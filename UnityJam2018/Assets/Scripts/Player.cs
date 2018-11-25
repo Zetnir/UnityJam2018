@@ -34,7 +34,8 @@ public class Player : MonoBehaviour {
 
     [Tooltip("Meshs du gameObject en fonction des biomes Dans l'ordre : Snow plain desert  ")]
 
-    public Mesh[] playerMeshs;
+    public GameObject[] playerSkins;
+    public GameObject currentSkin;
 
     //Points accumules 
     public float points;
@@ -67,8 +68,8 @@ public class Player : MonoBehaviour {
             playerInstance = this;
 
         //Set le mesh du joueur
-        meshFilter = gameObject.GetComponent<MeshFilter>();
-        meshFilter.mesh = playerMeshs[0];
+        currentSkin = Instantiate(playerSkins[0], gameObject.transform);
+        //gameObject. = playerSkins[0];
 
         //Initialiser les autres variables
         points = 0;
@@ -141,16 +142,17 @@ public class Player : MonoBehaviour {
     //Gerer le changement de mesh en fonction du nouveau biome dans le game manager
     public void OnBiomeChange(Biomes biome)
     {
+        Destroy(currentSkin);
         switch (biome)
         {
             case Biomes.snow:
-                meshFilter.mesh = playerMeshs[0];
+                currentSkin = Instantiate(playerSkins[0], gameObject.transform);
                 break;
             case Biomes.plain:
-                meshFilter.mesh = playerMeshs[1];
+                currentSkin = Instantiate(playerSkins[1], gameObject.transform);
                 break;
             case Biomes.desert:
-                meshFilter.mesh = playerMeshs[2];
+                currentSkin = Instantiate(playerSkins[2], gameObject.transform);
                 break;
 
             default:
