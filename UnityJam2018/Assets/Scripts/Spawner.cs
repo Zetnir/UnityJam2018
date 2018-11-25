@@ -49,7 +49,7 @@ public class Spawner : MonoBehaviour {
     //Variables de transition
     public int transitionPlateformNb;
     public static bool inTransition;
-    public GameObject transitionPlatform;
+    public Material transitionPlatform;
 
     //File paths
     public string filePathSnow;
@@ -62,7 +62,8 @@ public class Spawner : MonoBehaviour {
     public int position;
     private int lastObjectSize;
 
-   
+    private bool isSpawning;
+    private bool isSpawinObjects;
 
     //Instance
     public static Spawner instance;
@@ -72,14 +73,12 @@ public class Spawner : MonoBehaviour {
     {
         if (!instance)
             instance = this;
-
+        OnBiomeChange();
         position = 0;
         Random.InitState(Mathf.FloorToInt(Time.deltaTime * 1999));
 
-        OnBiomeChange();
-
-        PlateformSpawn();
-        MovingObjectSpawn();
+        if(!isSpawinObjects)
+            MovingObjectSpawn();
        
     }
 	
@@ -140,27 +139,28 @@ public class Spawner : MonoBehaviour {
     {
         if (other.tag.Contains("Ghost"))
             MovingObjectSpawn();
-        else if (other.tag.Contains("Platform"))
+
+        else if (other.tag.Contains("Platform") && !isSpawning)
         {
-            if(other.gameObject.name.Contains("Transition"))
-                inTransition = false;
+            StartCoroutine(DelaySpawnPlatteforme());
             PlateformSpawn();
         }
-        Debug.Log("State de transition : "+inTransition);
+      
 
     }
 
     private void MovingObjectSpawn()
     {
-
-        if (inTransition)
-            return;
-
-
-        GameObject spawnGhost = Instantiate(Ghost, movingObjectsSpawnPoints[0].position, Quaternion.identity);
-        //Tant qu'il y a de la place sur la plateforme
-        while (position < 5)
+        isSpawinObjects = true;
+        if (!inTransition)
         { 
+           
+
+
+         GameObject spawnGhost = Instantiate(Ghost, movingObjectsSpawnPoints[0].position, Quaternion.identity);
+          //Tant qu'il y a de la place sur la plateforme
+          while (position < 5)
+          { 
             //Primary value corresponds a la variable aleatoire
 
             primaryValue =  Random.Range(0, maxModuloValue);
@@ -196,10 +196,10 @@ public class Spawner : MonoBehaviour {
                 position++;
 
 
+          }
+          position = 0;
         }
-        position = 0;
-
-
+        isSpawinObjects = false;
     }
 
     //Permet de generer a partir du nombre aleatoire l'objet a faire apparaitre
@@ -242,17 +242,30 @@ public class Spawner : MonoBehaviour {
     //Spawn des plateformes
     private void PlateformSpawn()
     {
-        if (inTransition)
-        {
-            GameObject g = Instantiate(transitionPlatform, transform.position, Quaternion.identity);
-            Debug.Log("Transition plateform spwned" + g.name);
-           
-        }
-        else
-        { 
             GameObject g = Instantiate(plateforme, transform.position, Quaternion.identity);
-            g.GetComponent<Renderer>().materials[0] = spawningMaterial;
+            if (inTransition)
+            { 
+                g.GetComponent<Renderer>().materials[0] = spawningMaterial;
+                g.AddComponent<BoxCollider>();
+                BoxCollider b = g.GetComponent<BoxCollider>();
+                b.size = new Vector3(10,1,10);
+                b.isTrigger = true;
+                g.name = "Transition";
+                inTransition = false;
+            }
+            else
+                g.GetComponent<Renderer>().materials[0] = spawningMaterial;
+   
+       
+    }
 
-        }
+    IEnumerator DelaySpawnPlatteforme()
+    {
+        isSpawning = true;
+        yield return new WaitForSeconds(0.1f);
+        isSpawning = false;
     }
 }
+
+
+

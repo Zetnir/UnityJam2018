@@ -44,6 +44,7 @@ public class SliderMenu : MonoBehaviour {
             //GameManager.instance.currentPhase = GameManager.Phase.InGame;
             UIManager.instance.ResetEndGameUI();
             UIManager.instance.SetInGameUI();
+            SoundManager.instance.LaunchInGameMusic();
             CameraManager.instance.cameraInGame = true;
         }
     }

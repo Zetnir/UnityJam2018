@@ -21,6 +21,7 @@ public class SoundManager : MonoBehaviour {
             instance = this;
 
         currentAudioSource = GetComponent<AudioSource>();
+        LaunchMenuMusic();
 	}
 	
 	// Update is called once per frame
