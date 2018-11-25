@@ -160,7 +160,7 @@ public class Spawner : MonoBehaviour {
 
     }
 
-    private void MovingObjectSpawn()
+    public void MovingObjectSpawn()
     {
         int spawnedLast = 0;
         isSpawinObjects = true;
