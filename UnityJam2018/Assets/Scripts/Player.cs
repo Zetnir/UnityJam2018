@@ -39,6 +39,7 @@ public class Player : MonoBehaviour {
     //Points accumules 
     public float points;
     public int multiplicateur;
+    public float finalPoints;
 
     //Variable pour switch de biome
     private float delataPoints;
@@ -104,7 +105,7 @@ public class Player : MonoBehaviour {
 
 
         //Déterminer le changement de phase
-        if (delataPoints >= 600)
+        if (delataPoints >= 200)
         {
             switch (currentBiome)
             {
@@ -185,7 +186,6 @@ public class Player : MonoBehaviour {
             case Biomes.desert:
                 currentSkin = Instantiate(playerSkins[2], gameObject.transform);
                 break;
-
             default:
                 break;
         }
@@ -208,6 +208,7 @@ public class Player : MonoBehaviour {
             //Gere l'evenement lors de la collision avec un obstacle 
             case "Obstacle":
                 alive = false;
+                finalPoints = points;
                 PlayDeathPlayerSound();
                 currentFx = Instantiate(fxDeath, transform);
                 currentFx.GetComponent<ParticleSystem>().Play();

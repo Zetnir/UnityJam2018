@@ -84,7 +84,6 @@ public class Spawner : MonoBehaviour {
             instance = this;
         OnBiomeChange();
         position = 0;
-        Random.InitState(Mathf.FloorToInt(Time.deltaTime * 1999));
 
         if(!isSpawinObjects)
             MovingObjectSpawn();
@@ -152,7 +151,7 @@ public class Spawner : MonoBehaviour {
         if (other.tag.Contains("Ghost"))
             MovingObjectSpawn();
 
-        else if (other.tag.Contains("Platform") && !isSpawning)
+        if (other.tag.Contains("Platform") && !isSpawning)
         {
             StartCoroutine(DelaySpawnPlatteforme());
             PlateformSpawn();

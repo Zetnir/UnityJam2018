@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour {
     public GameObject EndGameUI;
     public Slider ExitSliderUI;
     public Slider ReplaySliderUI;
+    public Text textFinalScore;
 
 
 
@@ -70,6 +71,7 @@ public class UIManager : MonoBehaviour {
     {
         InGameUI.SetActive(false);
         EndGameUI.SetActive(true);
+        textFinalScore.text = Mathf.FloorToInt(Player.playerInstance.finalPoints).ToString();
     }
 
     public void ResetEndGameUI()

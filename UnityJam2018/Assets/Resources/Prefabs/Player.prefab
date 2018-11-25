@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4861019301653948}
   - component: {fileID: 114209502202355902}
   - component: {fileID: 33379057612775198}
-  - component: {fileID: 23493707348628262}
   - component: {fileID: 54607633168695170}
   - component: {fileID: 65329878729004956}
-  - component: {fileID: 95528123948624662}
+  - component: {fileID: 82769608990749820}
+  - component: {fileID: 95024656736980060}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -45,41 +45,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23493707348628262
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1293920339192292}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: 78016af3996b65743b31924f269f6695, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!33 &33379057612775198
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -112,9 +77,104 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.8, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &95528123948624662
+--- !u!82 &82769608990749820
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1293920339192292}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!95 &95024656736980060
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -122,8 +182,8 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1293920339192292}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 829d4e197fd52cd4799f1fc5b9f0ca95, type: 3}
-  m_Controller: {fileID: 9100000, guid: 44c2e3bf0f9c1154c98b1059f3a22382, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 6fafb5e431c2e5144abfa93ed2a6c1ba, type: 3}
+  m_Controller: {fileID: 9100000, guid: 9cec3b3e68ab5a3439533eb2301c75f5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -144,12 +204,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alive: 0
-  playerMeshs:
-  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  - {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-  - {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  playerSkins:
+  - {fileID: 1210706454439516, guid: c2eeb64c3f859d343982ce1702abc0f8, type: 2}
+  - {fileID: 1515266729786932, guid: a2a9428c77d737a4d90247c0fadaeb94, type: 2}
+  - {fileID: 1507561861696546, guid: 8c3a732d41efdf44091793641f7ea68f, type: 2}
+  currentSkin: {fileID: 0}
   points: 0
   multiplicateur: 15
+  finalPoints: 0
   deathAnimation: {fileID: 0}
   ratioScreenScene: -2.5
+  fxDeath: {fileID: 1363184842375782, guid: da9d897ed77614d44931075896882579, type: 2}
+  fxFormChangement: {fileID: 1042623541634920, guid: 552361049ba84f54faf8435bec336002,
+    type: 2}
+  currentFx: {fileID: 0}
+  formChangementForm: {fileID: 8300000, guid: d62280df693325149a5207959e89a2f1, type: 3}
+  deathSound: {fileID: 8300000, guid: 697c2639ffda6a740acabc0afb61a6d7, type: 3}
   pointsTxt: {fileID: 0}
