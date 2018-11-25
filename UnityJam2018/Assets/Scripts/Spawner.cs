@@ -40,6 +40,7 @@ public class Spawner : MonoBehaviour {
 
     //Prefab de la plateform
     public GameObject plateforme;
+    public GameObject Ghost;
 
     public List<GameObject> biomeObstacles = new List<GameObject>();
     public Material spawningMaterial;
@@ -57,7 +58,7 @@ public class Spawner : MonoBehaviour {
     /*Gains pour le spawn*/
     public int maxModuloValue;
     private int primaryValue;
-    private int position;
+    public int position;
     private int lastObjectSize;
 
     // Use this for initialization
@@ -130,7 +131,7 @@ public class Spawner : MonoBehaviour {
     //Gere le spawn on collider exit
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag.Contains("Obstacles"))
+        if (other.tag.Contains("Ghost"))
             MovingObjectSpawn();
         else if (other.tag.Contains("Plateform"))
         {
@@ -143,7 +144,8 @@ public class Spawner : MonoBehaviour {
 
     private void MovingObjectSpawn()
     {
-        
+
+        GameObject spawnGhost = Instantiate(Ghost, movingObjectsSpawnPoints[0].position, Quaternion.identity);
         //Tant qu'il y a de la place sur la plateforme
         while (position < 5)
         { 
@@ -160,16 +162,21 @@ public class Spawner : MonoBehaviour {
                 if (lastObjectSize == 3)
                 {
                     t = movingObjectsSpawnPoints[position + 1];
+                    GameObject c = Instantiate(g, t.position, Quaternion.identity);
                     position += 3;
                 }
                 else if (lastObjectSize == 2) //Faire la moyene des deux points si c'est un objet de taille 2
                 {
-                    t.SetPositionAndRotation(new Vector3(((movingObjectsSpawnPoints[position].position.x + movingObjectsSpawnPoints[position + 1].position.x) / 2), movingObjectsSpawnPoints[position].position.y, movingObjectsSpawnPoints[position].position.z), movingObjectsSpawnPoints[position].rotation);
+                    Vector3 newPosition = new Vector3(((movingObjectsSpawnPoints[position].position.x + movingObjectsSpawnPoints[position + 1].position.x) / 2), movingObjectsSpawnPoints[position].position.y, movingObjectsSpawnPoints[position].position.z);
+
+                    GameObject c = Instantiate(g, newPosition, Quaternion.identity);
                     position += 2;
                 }
                 else
+                {
+                    GameObject c = Instantiate(g, t.position, Quaternion.identity);
                     position++;
-                GameObject c = Instantiate(g, movingObjectsSpawnPoints[position].transform.position,movingObjectsSpawnPoints[position].transform.rotation);
+                }
             }
 
 
@@ -200,7 +207,7 @@ public class Spawner : MonoBehaviour {
             return biomeObstacles[1];
 
         }
-        else if (value <= maxModuloValue - 3 - position)
+        else if (value <= maxModuloValue - 4 - position)
         {
             //Retourne un objet de taille 3
             Debug.Log("Returning :" + biomeObstacles[2].name);

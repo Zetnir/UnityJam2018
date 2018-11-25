@@ -234,7 +234,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1470528789892394}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -526,6 +526,7 @@ MonoBehaviour:
   - {fileID: 4414610833842832}
   plateformTransform: {fileID: 0}
   plateforme: {fileID: 1130590338643344, guid: 561b0fc817438034d938c129d935dd79, type: 2}
+  Ghost: {fileID: 1735424047631462, guid: 220fbf194c4c9944cbfad2be900dddc6, type: 2}
   biomeObstacles: []
   spawningMaterial: {fileID: 0}
   transitionPlateformNb: 0
@@ -533,3 +534,4 @@ MonoBehaviour:
   filePathPlain: Prefabs/Obstacle/Plain
   filePathDesert: Prefabs/Obstacle/Desert
   maxModuloValue: 10
+  position: 0
