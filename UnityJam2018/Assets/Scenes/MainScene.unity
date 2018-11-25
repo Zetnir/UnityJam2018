@@ -160,6 +160,18 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114003416441028772, guid: 887966c93b29718448d2bcd1242748e3,
+        type: 2}
+      propertyPath: plateforme
+      value: 
+      objectReference: {fileID: 1130590338643344, guid: b85c501e7c3d42b419d04c2479396868,
+        type: 2}
+    - target: {fileID: 114003416441028772, guid: 887966c93b29718448d2bcd1242748e3,
+        type: 2}
+      propertyPath: transitionPlatform
+      value: 
+      objectReference: {fileID: 1130590338643344, guid: 561b0fc817438034d938c129d935dd79,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 887966c93b29718448d2bcd1242748e3, type: 2}
   m_IsPrefabAsset: 0
@@ -215,6 +227,11 @@ Prefab:
     - target: {fileID: 114209502202355902, guid: 2d357af972c32924f836b7c541417659,
         type: 2}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114209502202355902, guid: 2d357af972c32924f836b7c541417659,
+        type: 2}
+      propertyPath: alive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

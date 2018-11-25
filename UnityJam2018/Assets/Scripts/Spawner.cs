@@ -122,8 +122,8 @@ public class Spawner : MonoBehaviour {
             biomeObstacles.Clear();
 
         //Import de la texture et conversion en material
-        Object[] TempMaterialList = Resources.LoadAll(path, typeof(Material));
-        spawningMaterial = TempMaterialList[0]as Material;
+        //Object[] TempMaterialList = Resources.LoadAll(path, typeof(Material));
+        //spawningMaterial = TempMaterialList[0]as Material;
 
         //Import des props et conversion en GameObjects
         Object[] tempList = Resources.LoadAll(path, typeof(GameObject));
