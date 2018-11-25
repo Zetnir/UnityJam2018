@@ -22,4 +22,11 @@ public class MovingObject : MonoBehaviour
     {
         transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Destroyer")
+            Destroy(gameObject);
+    }
 }
