@@ -84,7 +84,7 @@ public class Player : MonoBehaviour {
     //Gagne de plus en plus de points en fonction du temps
     void Update () {
 
-        if(alive)
+        if(alive && GameManager.instance.currentPhase == GameManager.Phase.InGame)
             points += Time.deltaTime * multiplicateur;
 
         pointsTxt.text = Mathf.FloorToInt(points).ToString();
@@ -93,7 +93,7 @@ public class Player : MonoBehaviour {
 
 
         //Déterminer le changement de phase
-        if (Mathf.FloorToInt(points) % 100 == 1)
+        if (Mathf.FloorToInt(points) % 600 == 1)
         {
             switch (currentBiome)
             {

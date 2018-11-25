@@ -39,10 +39,12 @@ public class CameraManager : MonoBehaviour {
 
     public void SetCameraToGame()
     {
-        if (myCam.transform.rotation != Quaternion.Euler(InGameRot))
+
+        if (myCam.transform.rotation != Quaternion.Euler(InGameRot) && myCam.transform.position != InGamePos)
         {
             Quaternion target = Quaternion.Euler(InGameRot);
             myCam.transform.rotation = Quaternion.Slerp(myCam.transform.rotation, target, speedRotation * Time.deltaTime);
+            myCam.transform.position = Vector3.Slerp(myCam.transform.position, InGamePos, speedRotation * Time.deltaTime);
         }
         else
         {

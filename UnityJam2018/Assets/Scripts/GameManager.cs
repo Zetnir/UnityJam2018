@@ -59,7 +59,8 @@ public class GameManager : MonoBehaviour {
                 if (putOnPause && Time.timeScale != 0) //Input.touchCount < 1
                     PauseGame();
 
-                MovingObject.speed += MovingObject.SPEED_INIT * Time.deltaTime * 0.10f;
+                if (MovingObject.speed < 20)
+                    MovingObject.speed += MovingObject.SPEED_INIT * Time.deltaTime * 0.10f;
                 Debug.Log(MovingObject.speed);
                 break;
 
