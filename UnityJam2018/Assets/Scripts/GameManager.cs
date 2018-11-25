@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /*
     Gere le jeu en fonction de la phase actuelle
@@ -27,11 +28,14 @@ public class GameManager : MonoBehaviour {
     float timeScaleDecrease = 5f;
     float timeScaleIncrease = 2f;
     public float currentTimeScale;
+    public bool putOnPause = false;
 
 	// Use this for initialization
 	void Start () {
         if (!instance)
             instance = this;
+
+        Time.timeScale = 1;
 	}
 	
 	// Update is called once per frame
@@ -48,14 +52,19 @@ public class GameManager : MonoBehaviour {
                 break;
 
             case Phase.InGame:
+
+                if (!Input.GetMouseButton(0))
+                    putOnPause = true;
                 //Si le jeu est en cours boucle la fonction pauseGame jusqu'a ce que le jeu s'arrete et se met en pause
-                if (!Input.GetMouseButton(0) && Time.timeScale != 0) //Input.touchCount < 1
+                if (putOnPause && Time.timeScale != 0) //Input.touchCount < 1
                     PauseGame();
                 break;
 
             case Phase.Pause:
+                if (Input.GetMouseButton(0))
+                    putOnPause = false;
                 //Si le jeu est en pause boucle la fonction resumeGame jusqu'a ce que le jeu reprenne
-                if (Input.GetMouseButton(0) && Time.timeScale != 1) //Input.touchCount > 0
+                if (!putOnPause && Time.timeScale != 1) //Input.touchCount > 0
                     ResumeGame();
                 break;
 
@@ -108,5 +117,10 @@ public class GameManager : MonoBehaviour {
 
         UIManager.instance.SetEndGameUI();
         currentPhase = Phase.EndGame;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
     }
 }

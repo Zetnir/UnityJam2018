@@ -41,9 +41,10 @@ public class SliderMenu : MonoBehaviour {
         if(mySlider.value == mySlider.maxValue)
         {
             mySlider.interactable = false;
-            GameManager.instance.currentPhase = GameManager.Phase.InGame;
+            //GameManager.instance.currentPhase = GameManager.Phase.InGame;
             UIManager.instance.ResetEndGameUI();
             UIManager.instance.SetInGameUI();
+            CameraManager.instance.cameraInGame = true;
         }
     }
 
@@ -51,10 +52,12 @@ public class SliderMenu : MonoBehaviour {
     {
         if (mySlider.value == mySlider.maxValue)
         {
-            mySlider.interactable = false;
-            GameManager.instance.currentPhase = GameManager.Phase.Menu;
-            UIManager.instance.ResetMenuUI();
-            UIManager.instance.SetMenuUI();
+            GameManager.instance.RestartGame();
+            //mySlider.interactable = false;
+            //GameManager.instance.currentPhase = GameManager.Phase.Menu;
+            //UIManager.instance.ResetMenuUI();
+            //UIManager.instance.SetMenuUI();
+            //Spawner.instance.gameObject.SetActive(false);
         }
     }
 
