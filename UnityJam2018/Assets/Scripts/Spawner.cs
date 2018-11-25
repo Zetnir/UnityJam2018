@@ -159,25 +159,30 @@ public class Spawner : MonoBehaviour {
             //Verifier qu'on spawn un vrai objet
             if (g)
             {   //Pour gerer les differents ofset de position sur la plateforme, offset de 1 quand cest un objet de taille 3 
-                if (lastObjectSize == 3)
+                if (lastObjectSize == 3 && position < 2)
                 {
                     t = movingObjectsSpawnPoints[position + 1];
                     GameObject c = Instantiate(g, t.position, Quaternion.identity);
                     position += 3;
                 }
-                else if (lastObjectSize == 2) //Faire la moyene des deux points si c'est un objet de taille 2
+                else if (lastObjectSize == 2 && position < 3) //Faire la moyene des deux points si c'est un objet de taille 2
                 {
                     Vector3 newPosition = new Vector3(((movingObjectsSpawnPoints[position].position.x + movingObjectsSpawnPoints[position + 1].position.x) / 2), movingObjectsSpawnPoints[position].position.y, movingObjectsSpawnPoints[position].position.z);
 
                     GameObject c = Instantiate(g, newPosition, Quaternion.identity);
                     position += 2;
                 }
-                else
+                else if (lastObjectSize == 1)
                 {
                     GameObject c = Instantiate(g, t.position, Quaternion.identity);
                     position++;
                 }
+               
+
+
             }
+            else
+                position++;
 
 
         }
@@ -188,10 +193,10 @@ public class Spawner : MonoBehaviour {
 
     //Permet de generer a partir du nombre aleatoire l'objet a faire apparaitre
     private GameObject ObjectToSpawn(int value)
-    {
+    {   //Value corresponds a un nombre aleatoire entre 0 et MaxModuloValue 
 
         //Retourne un objet de taille 1 
-        if (value <= maxModuloValue - 7 - position)
+        if (value <= 3)
         {
             Debug.Log("Returning :" + biomeObstacles[0].name);
             
@@ -199,7 +204,7 @@ public class Spawner : MonoBehaviour {
             return biomeObstacles[0];
 
         }
-        else if (value <= maxModuloValue - 5 - position)
+        else if (value <= 5)
         {   //Retourne un objet de taille 2 en 3
             Debug.Log("Returning :" + biomeObstacles[1].name);
            
@@ -207,11 +212,11 @@ public class Spawner : MonoBehaviour {
             return biomeObstacles[1];
 
         }
-        else if (value <= maxModuloValue - 4 - position)
+        else if (value <= 7)
         {
             //Retourne un objet de taille 3
             Debug.Log("Returning :" + biomeObstacles[2].name);
-           lastObjectSize = 3;
+            lastObjectSize = 3;
             return biomeObstacles[2];
         }
         else
