@@ -19,8 +19,8 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - _FogIntensity: 1.53
-    - _FogMaxIntensity: 0.79
+    - _FogIntensity: 1.71
+    - _FogMaxIntensity: 0.15
     - __dirty: 0
     m_Colors:
     - _ColorFog: {r: 0.60929155, g: 0.78305, b: 0.7924528, a: 0}
