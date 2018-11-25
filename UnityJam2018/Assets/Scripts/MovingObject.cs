@@ -10,8 +10,8 @@ public class MovingObject : MonoBehaviour
      Existe sur un gameObject avec un collider
     */
 
-
-    public static float speed = 7;
+    public const float SPEED_INIT = 3;
+    public static float speed= 3;
 
     // Use this for initialization
     void Start()
