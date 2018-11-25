@@ -7,6 +7,7 @@ TagManager:
   - Obstacle
   - Platform
   - Ghost
+  - Destroyer
   layers:
   - Default
   - TransparentFX

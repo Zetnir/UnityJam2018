@@ -92,14 +92,25 @@ public class Player : MonoBehaviour {
 
 
         //Déterminer le changement de phase
-        if (points % 600 == 0)
-        { 
-            if (currentBiome == Biomes.desert)
-                nextBiome = Biomes.snow;
-            else
-                nextBiome++;
+        if (Mathf.FloorToInt(points) % 100 == 1)
+        {
+            switch (currentBiome)
+            {
+                case Biomes.snow:
+                    nextBiome = Biomes.plain;
+                    break;
+                case Biomes.plain:
+                    nextBiome = Biomes.desert;
+                    break;
+                case Biomes.desert:
+                    nextBiome = Biomes.snow;
+                    break;
+                default:
+                    break;
+            }
 
             Spawner.instance.OnBiomeChange();
+            Spawner.inTransition = true;
         }
 
         //Conditions en fonction de l'état du jeu 
@@ -181,12 +192,15 @@ public class Player : MonoBehaviour {
                 OnBiomeChange(Biomes.plain);
                 currentBiome = Biomes.plain;
                 break;
-
+           
 
             default:
                 break;
         }
-
-        
+       if( other.gameObject.name.Contains("Transition"))
+        { 
+                OnBiomeChange(nextBiome);
+                currentBiome = nextBiome;
+        }
     }
 }
